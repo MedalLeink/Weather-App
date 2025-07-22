@@ -51,3 +51,9 @@ body {
     height: 60px;
     cursor: pointer;
 }
+
+.search button i {
+    width: 16px;
+    font-size: 20px;
+    /* text-align: center; */
+}
