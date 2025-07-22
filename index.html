@@ -50,22 +50,30 @@
     <script>
       const apiKey = "1ff3ee52d149475958322054f3e4c785";
       const apiUrl =
-        "https://api.openweathermap.org/data/2.5/weather?units=metric&q=Pittsburgh";
+        "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
-        async function checkWeather() {
-            const response = await fetch(apiUrl + `&appid=${apiKey}`);
-            var data = await response.json();
+      const searchBox = document.querySelector(".search input");
+      const searchBtn = document.querySelector(".search button");
 
+      async function checkWeather(city) {
+        const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+        var data = await response.json();
 
-            console.log(data)
+        console.log(data);
 
-            document.querySelector(".city").innerHTML = data.name;
-            document.querySelector(".temp").innerHTML = data.main.temp + "°C";
-            document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
-            document.querySelector(".wind").innerHTML = data.wind.speed;
-        }
+        document.querySelector(".city").innerHTML = data.name;
+        document.querySelector(".temp").innerHTML =
+          Math.round(data.main.temp) + "°C";
+        document.querySelector(".humidity").innerHTML =
+          data.main.humidity + "%";
+        document.querySelector(".wind").innerHTML = data.wind.speed;
+      }
 
-        checkWeather();
+      searchBtn.addEventListener("click", () => {
+        checkWeather(searchBox.value);
+      });
+
+    //   checkWeather();
     </script>
   </body>
 </html>
