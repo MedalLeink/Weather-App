@@ -101,5 +101,12 @@ body {
 
 .weather {
     display: none;
+}
 
+.error {
+    text-align: left;
+    margin-right: 10px;
+    font-family: 14px;
+    margin-top: 10px;
+    display: none;
 }
